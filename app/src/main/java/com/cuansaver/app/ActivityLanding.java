@@ -20,10 +20,9 @@ public class ActivityLanding extends AppCompatActivity {
 
         binding = ActivityLandingBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        Toast.makeText(getApplicationContext(), "all bind", Toast.LENGTH_SHORT).show();
         binding.btnLogin.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onClick(View view) { Toast.makeText(getApplicationContext(), "test", Toast.LENGTH_SHORT).show(); intendedAction("login"); }
+            public void onClick(View view) { intendedAction("login"); }
         });
         binding.btnRegister.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -34,17 +33,14 @@ public class ActivityLanding extends AppCompatActivity {
         Intent intent = null;
         switch (page){
             case "login":
-                Toast.makeText(getApplicationContext(), "test", Toast.LENGTH_SHORT).show();
                 intent = new Intent(this, ActivityLogin.class);
                 startActivity(intent);
                 break;
             case "register":
-                Toast.makeText(getApplicationContext(), "test", Toast.LENGTH_SHORT).show();
                 intent = new Intent(this, ActivityRegister.class);
                 startActivity(intent);
                 break;
             default:
-                Toast.makeText(getApplicationContext(), "test", Toast.LENGTH_SHORT).show();
                 intent = new Intent(this, ActivityMain.class);
                 startActivity(intent);
                 return;
