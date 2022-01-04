@@ -19,6 +19,8 @@ public class ActivityLanding extends AppCompatActivity {
         setContentView(R.layout.activity_landing);
 
         binding = ActivityLandingBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        Toast.makeText(getApplicationContext(), "all bind", Toast.LENGTH_SHORT).show();
         binding.btnLogin.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) { Toast.makeText(getApplicationContext(), "test", Toast.LENGTH_SHORT).show(); intendedAction("login"); }
