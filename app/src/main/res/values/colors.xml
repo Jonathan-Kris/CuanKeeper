@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="green_300">#BAED89</color>
+    <color name="green_600">#95E24F</color>
+    <color name="green_900">#6FD32B</color>
+    <color name="orange_300">#FCD08F</color>
+    <color name="orange_600">#F9B657</color>
+    <color name="orange_900">#F69732</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <!--  generate color from http://mcg.mbitson.com/   -->
+</resources>
