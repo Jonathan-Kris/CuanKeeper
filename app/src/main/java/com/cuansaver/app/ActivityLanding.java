@@ -45,6 +45,5 @@ public class ActivityLanding extends AppCompatActivity {
                 startActivity(intent);
                 return;
         }
-
     }
 }

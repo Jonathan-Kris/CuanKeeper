@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.cuansaver.app">
+    package="com.cuansaver.app" >
 
     <application
         android:allowBackup="true"
@@ -8,7 +8,12 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.CuanSaver">
+        android:theme="@style/Theme.CuanSaver" >
+        <activity
+            android:name=".ActivityMain"
+            android:exported="false"
+            android:label="@string/title_activity_main"
+            android:theme="@style/Theme.CuanSaver.NoActionBar" />
         <activity
             android:name=".auth.ActivityLogin"
             android:exported="false" />
@@ -16,12 +21,8 @@
             android:name=".auth.ActivityRegister"
             android:exported="false" />
         <activity
-            android:name=".ActivityMain"
-            android:exported="false">
-        </activity>
-        <activity
             android:name=".ActivityLanding"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
