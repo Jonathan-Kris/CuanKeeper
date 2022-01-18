@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "798248118765",
-    "firebase_url": "https://expense-tracker-app-52eab-default-rtdb.asia-southeast1.firebasedatabase.app",
-    "project_id": "expense-tracker-app-52eab",
-    "storage_bucket": "expense-tracker-app-52eab.appspot.com"
+    "project_number": "659258032843",
+    "firebase_url": "https://cuan-saver-app-default-rtdb.firebaseio.com",
+    "project_id": "cuan-saver-app",
+    "storage_bucket": "cuan-saver-app.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:798248118765:android:77766da2c7534588a3dfe4",
+        "mobilesdk_app_id": "1:659258032843:android:ef0b485e05b8ffb65dd14e",
         "android_client_info": {
           "package_name": "com.cuansaver.app"
         }
       },
       "oauth_client": [
         {
-          "client_id": "798248118765-ii3ock6ksp0ec1u36ktj9qpot3vbpa0g.apps.googleusercontent.com",
+          "client_id": "659258032843-hje6um9o8ss4lltpjho4hnn8kmj5gtl2.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCso8Q3Jie1I1yLY76pc0pqH6bT30-JJRs"
+          "current_key": "AIzaSyCsYth78pwC05ojY875gXwik5KU7v05vIQ"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "798248118765-ii3ock6ksp0ec1u36ktj9qpot3vbpa0g.apps.googleusercontent.com",
+              "client_id": "659258032843-hje6um9o8ss4lltpjho4hnn8kmj5gtl2.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

@@ -7,67 +7,53 @@
     tools:context=".ui.home.HomeFragment">
 
     <LinearLayout
+        android:id="@+id/linearLayout1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_margin="20dp"
-        android:background="@color/orange_300">
+        android:orientation="vertical"
+        android:gravity="center">
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:id="@+id/linearLayout3"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
+            app:layout_constraintTop_toTopOf="parent"
+            android:orientation="horizontal"
             android:gravity="center"
-            android:layout_margin="10dp">
-            <TextView
+            android:layout_margin="20dp"
+            android:background="@color/orange_300">
+            <LinearLayout
+                android:id="@+id/linearLayout4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Pendapatan"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="123"/>
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_margin="10dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pendapatan"/>
+                <TextView
+                    android:id="@+id/totalAmount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="123"/>
+            </LinearLayout>
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:layout_margin="10dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Pengeluaran"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="123"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:layout_margin="10dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Saldo"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="123"/>
-        </LinearLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            app:layout_constraintTop_toBottomOf="@id/linearLayout4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
     </LinearLayout>
-    <Button
-        android:id="@+id/button_second"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Try to insrt data to firebase"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+<!--    <Button-->
+<!--        android:id="@+id/button_second"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Try to insrt data to firebase"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/linearLayout1"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
