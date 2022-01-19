@@ -42,10 +42,10 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder>{
     private String postid;
     private String note;
     private int amount;
-    private String amountStr;
     private String item;
     private String category;
     private String uid;
+    private String oldDate;
 
 
     public ItemAdapter(Context mContext, List<Data> myDataList, String uid) {
@@ -71,6 +71,23 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder>{
         holder.notes.setText("Note: "+data.getNotes());
         holder.category.setText("Category: "+data.getCategory());
 
+        switch (data.getCategory()){
+            case "Transport":
+                holder.imageView.setImageResource(R.drawable.ic_item_transport);
+                break;
+            case "Food":
+                holder.imageView.setImageResource(R.drawable.ic_item_food);
+                break;
+            case "Entertainment":
+                holder.imageView.setImageResource(R.drawable.ic_item_entertainment);
+                break;
+            case "Other":
+                holder.imageView.setImageResource(R.drawable.ic_item_other);
+                break;
+            default:
+                holder.imageView.setImageResource(R.drawable.ic_item_error);
+        }
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -79,6 +96,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder>{
                 amount = data.getAmount();
                 item = data.getItem();
                 category = data.getCategory();
+                oldDate = data.getDate();
 
                 updateData();
             }
@@ -121,11 +139,8 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder>{
                 amount = Integer.parseInt(mAmount.getText().toString());
                 note = mNote.getText().toString();
                 category = mSpinner.getSelectedItem().toString();
-                DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-                Calendar cal = Calendar.getInstance();
-                String date = dateFormat.format(cal.getTime());
 
-                Data data = new Data(item, date, postid, note, amount, category);
+                Data data = new Data(item, oldDate, postid, note, amount, category);
                 DatabaseReference reference = FirebaseDatabase.getInstance("https://cuan-saver-app-default-rtdb.firebaseio.com").getReference().child("Expenses").child(uid);
                 reference.child(postid).setValue(data).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
