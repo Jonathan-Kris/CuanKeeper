@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "659258032843-g7s10er7920td32gfcqpqib4olf9a7cg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cuansaver.app",
+            "certificate_hash": "f2ce2183d97700f27640f26b0b18bb041c320e8c"
+          }
+        },
+        {
           "client_id": "659258032843-hje6um9o8ss4lltpjho4hnn8kmj5gtl2.apps.googleusercontent.com",
           "client_type": 3
         }

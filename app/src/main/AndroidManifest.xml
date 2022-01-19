@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CuanSaver">
         <activity
+            android:name=".ActivityUpdate"
+            android:exported="false" />
+        <activity
             android:name=".ActivityInsert"
             android:exported="false" />
         <activity

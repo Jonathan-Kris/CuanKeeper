@@ -21,6 +21,7 @@ import com.cuansaver.app.model.Data;
 import com.cuansaver.app.ui.ItemAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -55,14 +56,6 @@ public class HomeFragment extends Fragment {
         View root = binding.getRoot();
         database = FirebaseDatabase.getInstance("https://cuan-saver-app-default-rtdb.firebaseio.com");
 
-//        binding.buttonSecond.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Toast.makeText(getActivity(), "Try to add item", Toast.LENGTH_SHORT).show();
-//                InsertItem();
-//            }
-//        });
-
         rv = binding.recyclerView;
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         linearLayoutManager.setReverseLayout(true);
@@ -86,8 +79,9 @@ public class HomeFragment extends Fragment {
         DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         Calendar cal = Calendar.getInstance();
         String date = dateFormat.format(cal.getTime());
-
-        DatabaseReference reference = database.getReference().child("Expenses").child("test-user");
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        String userId = auth.getUid();
+        DatabaseReference reference = database.getReference().child("Expenses").child(userId);
         Query query = reference.orderByChild("date").equalTo(date);
         query.addValueEventListener(new ValueEventListener() {
             @Override
@@ -110,26 +104,6 @@ public class HomeFragment extends Fragment {
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-    }
-
-    private void InsertItem(){
-        DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-        Calendar cal = Calendar.getInstance();
-        String date = dateFormat.format(cal.getTime());
-        ref = database.getReference().child("Expenses").child("test-user");
-        String id = ref.push().getKey();
-        Data data = new Data("TESTING", date, id, "primogems go brr", 1000000);
-        ref.child(id).setValue(data).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()){
-                    Toast.makeText(getActivity(), "Item added successfully", Toast.LENGTH_SHORT).show();
-                }else {
-                    Toast.makeText(getActivity(), "Failed to add Item", Toast.LENGTH_SHORT).show();
-                }
 
             }
         });

@@ -1,18 +1,19 @@
 package com.cuansaver.app.model;
 
 public class Data {
-    private String item, date, id, notes;
+    private String item, date, id, notes, category;
     private int amount;
 
     public Data() {
     }
 
-    public Data(String item, String date, String id, String notes, int amount) {
+    public Data(String item, String date, String id, String notes, int amount, String category) {
         this.item = item;
         this.date = date;
         this.id = id;
         this.notes = notes;
         this.amount = amount;
+        this.category = category;
     }
 
     public String getItem() {
@@ -54,4 +55,12 @@ public class Data {
     public void setAmount(int amount) {
         this.amount = amount;
     }
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
 }

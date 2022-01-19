@@ -1,9 +1,12 @@
 package com.cuansaver.app;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
 
+import com.cuansaver.app.auth.ActivityLogin;
+import com.cuansaver.app.auth.ActivityRegister;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
@@ -34,6 +37,7 @@ public class ActivityMain extends AppCompatActivity {
             public void onClick(View view) {
                 Snackbar.make(view, "Insert New Data", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+                intendedAction("insert");
             }
         });
 
@@ -62,5 +66,18 @@ public class ActivityMain extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_activity_main);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+    protected void intendedAction(String page){
+        Intent intent = null;
+        switch (page){
+            case "insert":
+                intent = new Intent(this, ActivityInsert.class);
+                startActivity(intent);
+                break;
+            default:
+                intent = new Intent(this, ActivityMain.class);
+                startActivity(intent);
+                return;
+        }
     }
 }

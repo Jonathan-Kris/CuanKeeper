@@ -18,6 +18,10 @@
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string-array name="categories">
+        <item>Transport</item>
+        <item>Food</item>
+        <item>Entertainment</item>
+        <item>Other</item>
+    </string-array>
 </resources>
