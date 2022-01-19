@@ -1,18 +1,19 @@
 plugins {
     id 'com.android.application'
     id 'com.google.gms.google-services'
+    id 'com.huawei.agconnect'
 }
-apply plugin: 'com.google.gms.google-services'
 
 android {
-    compileSdk 32
+    compileSdk 31
 
     defaultConfig {
         applicationId "com.cuansaver.app"
         minSdk 28
-        targetSdk 32
+        targetSdk 31
         versionCode 1
         versionName "1.0"
+        resConfigs "en", "zh-rCN"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -54,7 +55,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
     //firebase
-    implementation platform('com.google.firebase:firebase-bom:29.0.3')
+    implementation platform('com.google.firebase:firebase-bom:26.1.1')
     implementation 'com.google.firebase:firebase-analytics'
 
     //Firebase auth and database dependencies
@@ -62,4 +63,9 @@ dependencies {
 
     //enable login with google
     implementation 'com.google.android.gms:play-services-auth:20.0.1'
+    implementation 'com.google.android.gms:play-services-auth:19.0.0'
+
+    //Huawei Login
+    implementation 'com.huawei.agconnect:agconnect-core:1.5.2.300'
+    implementation 'com.huawei.hms:hwid:5.0.5.301'
 }

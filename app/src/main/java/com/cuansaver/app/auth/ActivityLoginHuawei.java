@@ -1,11 +1,11 @@
 package com.cuansaver.app.auth;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.cuansaver.app.ActivityMain;
 import com.cuansaver.app.R;
@@ -13,13 +13,14 @@ import com.huawei.hmf.tasks.OnFailureListener;
 import com.huawei.hmf.tasks.OnSuccessListener;
 import com.huawei.hmf.tasks.Task;
 import com.huawei.hms.common.ApiException;
+import com.huawei.hms.hwid.A;
 import com.huawei.hms.support.account.AccountAuthManager;
 import com.huawei.hms.support.account.request.AccountAuthParams;
 import com.huawei.hms.support.account.request.AccountAuthParamsHelper;
 import com.huawei.hms.support.account.result.AuthAccount;
 import com.huawei.hms.support.account.service.AccountAuthService;
 
-public class ActivityLogin extends AppCompatActivity {
+public class ActivityLoginHuawei extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -104,7 +105,7 @@ public class ActivityLogin extends AppCompatActivity {
         Log.i(TAG, "unionid:" + authAccount.getUnionId());
         // TODO: Implement service logic after the HUAWEI ID information is obtained.
 
-        Intent intent = new Intent(ActivityLogin.this, ActivityMain.class);
+        Intent intent = new Intent(ActivityLoginHuawei.this, ActivityMain.class);
         intent.putExtra("account", authAccount);
         startActivity(intent);
         finish();
