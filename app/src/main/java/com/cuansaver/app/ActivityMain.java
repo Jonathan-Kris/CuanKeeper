@@ -16,6 +16,7 @@ import com.cuansaver.app.auth.ActivityRegister;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -41,7 +42,6 @@ public class ActivityMain extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        setSupportActionBar(binding.appBarActivityMain.toolbar);
         binding.appBarActivityMain.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -53,22 +53,20 @@ public class ActivityMain extends AppCompatActivity {
         recvIntent = getIntent();
 
         DrawerLayout drawer = binding.drawerLayout;
-        NavigationView navigationView = binding.navView;
-        View headerView = navigationView.getHeaderView(0);
         TextView navUsername = (TextView) headerView.findViewById(R.id.username);
         TextView navEmail = (TextView) headerView.findViewById(R.id.email);
         navUsername.setText(recvIntent.getStringExtra("username"));
         navEmail.setText(recvIntent.getStringExtra("email"));
         String photo = recvIntent.getStringExtra("photo");
-        if(photo != null && !photo.isEmpty())
+        if (photo != null && !photo.isEmpty())
             new DownloadImageTask((ImageView) headerView.findViewById(R.id.imageView))
                     .execute(recvIntent.getStringExtra("photo"));
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow)
-                .setOpenableLayout(drawer)
-                .build();
+                        .setOpenableLayout(drawer)
+                        .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_activity_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
@@ -88,9 +86,10 @@ public class ActivityMain extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
-    protected void intendedAction(String page){
+
+    protected void intendedAction(String page) {
         Intent intent = null;
-        switch (page){
+        switch (page) {
             case "insert":
                 intent = new Intent(this, ActivityInsert.class);
                 intent.putExtra("uid", getIntent().getStringExtra("uid"));
@@ -102,6 +101,7 @@ public class ActivityMain extends AppCompatActivity {
                 return;
         }
     }
+
     private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
         ImageView bmImage;
 
