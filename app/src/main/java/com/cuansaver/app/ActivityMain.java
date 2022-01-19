@@ -42,6 +42,7 @@ public class ActivityMain extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        setSupportActionBar(binding.appBarActivityMain.toolbar);
         binding.appBarActivityMain.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -51,6 +52,8 @@ public class ActivityMain extends AppCompatActivity {
             }
         });
         recvIntent = getIntent();
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        View headerView = navigationView.getHeaderView(0);
 
         DrawerLayout drawer = binding.drawerLayout;
         TextView navUsername = (TextView) headerView.findViewById(R.id.username);
