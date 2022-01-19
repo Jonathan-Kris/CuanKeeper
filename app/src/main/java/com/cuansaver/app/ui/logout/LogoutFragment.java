@@ -19,7 +19,6 @@ import androidx.viewbinding.ViewBindings;
 import com.cuansaver.app.ActivityLanding;
 import com.cuansaver.app.ActivityMain;
 import com.cuansaver.app.auth.ActivityLogin;
-import com.cuansaver.app.databinding.FragmentCategoriesBinding;
 import com.cuansaver.app.databinding.FragmentInfoBinding;
 import com.huawei.hmf.tasks.OnFailureListener;
 import com.huawei.hmf.tasks.OnSuccessListener;
