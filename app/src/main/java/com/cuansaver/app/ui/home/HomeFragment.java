@@ -1,10 +1,13 @@
 package com.cuansaver.app.ui.home;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,6 +36,8 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 import java.util.Map;
 
 public class HomeFragment extends Fragment {
@@ -40,13 +45,16 @@ public class HomeFragment extends Fragment {
     private HomeViewModel homeViewModel;
     private FragmentHomeBinding binding;
     private FirebaseDatabase database;
-    private DatabaseReference ref;
+    private DatabaseReference reference;
 
     private ArrayList<Data> datas;
     private ItemAdapter itemAdapter;
     private RecyclerView rv;
 
-    private String uid;
+    final Calendar myCalendar= Calendar.getInstance();
+    private EditText etDate;
+
+    private String uid, selectionDate;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -55,18 +63,14 @@ public class HomeFragment extends Fragment {
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-        database = FirebaseDatabase.getInstance("https://cuan-saver-app-default-rtdb.firebaseio.com");
-        Intent intent = getActivity().getIntent();
-        uid = intent.getStringExtra("uid");
+        SetupVariables();
+        SetupDatepicker();
 
-        rv = binding.recyclerView;
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         linearLayoutManager.setReverseLayout(true);
         linearLayoutManager.setStackFromEnd(true);
         rv.setHasFixedSize(true);
         rv.setLayoutManager(linearLayoutManager);
-        datas = new ArrayList<>();
-        itemAdapter = new ItemAdapter(getActivity(), datas, getActivity().getIntent().getStringExtra("uid"));
         rv.setAdapter(itemAdapter);
         ReadData();
         return root;
@@ -77,30 +81,63 @@ public class HomeFragment extends Fragment {
         super.onDestroyView();
     }
 
-    private void ReadData(){
+    private void SetupVariables(){
+        etDate = binding.date;
+        Intent intent = getActivity().getIntent();
+        uid = intent.getStringExtra("uid");
+        database = FirebaseDatabase.getInstance("https://cuan-saver-app-default-rtdb.firebaseio.com");
+        reference = database.getReference().child("Expenses").child(uid);
+        rv = binding.recyclerView;
+        datas = new ArrayList<>();
+        itemAdapter = new ItemAdapter(getActivity(), datas, uid);
+    }
+    private void SetupDatepicker(){
+        DatePickerDialog.OnDateSetListener date =new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int day) {
+                myCalendar.set(Calendar.YEAR, year);
+                myCalendar.set(Calendar.MONTH,month);
+                myCalendar.set(Calendar.DAY_OF_MONTH,day);
+                UpdateLabel();
+            }
+        };
+        etDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new DatePickerDialog(getActivity(),date,myCalendar.get(Calendar.YEAR),myCalendar.get(Calendar.MONTH),myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
+    }
 
+    private void UpdateLabel(){
         DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-        Calendar cal = Calendar.getInstance();
-        String date = dateFormat.format(cal.getTime());
-        DatabaseReference reference = database.getReference().child("Expenses").child(uid);
-        Query query = reference.orderByChild("date").equalTo(date);
+        Date cal = myCalendar.getTime();
+        etDate.setText(dateFormat.format(cal));
+        selectionDate = dateFormat.format(cal);
+        ReadData();
+    }
+
+    private void ReadData(){
+        Query query = reference.orderByChild("date").equalTo(selectionDate);
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 datas.clear();
+                int totalAmount = 0;
                 for (DataSnapshot dataSnapshot: snapshot.getChildren()){
                     Data data = dataSnapshot.getValue(Data.class);
                     datas.add(data);
+                    totalAmount = data.getAmount();
+                    binding.totalAmount.setText("Rp. "+String.format("%,d",totalAmount).replace(",", "."));
                 }
                 itemAdapter.notifyDataSetChanged();
-                int totalAmount = 0;
+                totalAmount = 0;
                 for (DataSnapshot ds : snapshot.getChildren()){
                     Map< String, Object> map = (Map<String, Object>) ds.getValue();
                     Object total = map.get("amount");
                     int pTotal = Integer.parseInt(String.valueOf(total));
                     totalAmount+=pTotal;
-
-                    binding.totalAmount.setText("Total Day's Spending: $"+totalAmount);
+                    binding.totalAmount.setText("Rp. "+String.format("%,d",totalAmount).replace(",", "."));
                 }
             }
             @Override

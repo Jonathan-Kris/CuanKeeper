@@ -34,6 +34,13 @@
                     android:textStyle="bold"
                     android:textSize="18sp"
                     android:id="@+id/item"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="10dp"
+                    android:text="category"
+                    android:id="@+id/category"
+                    android:textColor="#000"/>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -46,17 +53,10 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="16sp"
+                    android:textSize="12sp"
                     android:text="note"
+                    android:maxWidth="300dp"
                     android:id="@+id/note"
-                    android:textColor="#000"/>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="16sp"
-                    android:text="cat"
-                    android:id="@+id/category"
                     android:textColor="#000"/>
             </LinearLayout>
             <View
@@ -67,11 +67,11 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
+                android:textSize="13sp"
                 android:text="date"
                 android:id="@+id/date"
                 android:textColor="#000"
-                android:padding="11dp"
+                android:padding="15dp"
                 android:layout_marginRight="20dp"/>
         </LinearLayout>
     </LinearLayout>
