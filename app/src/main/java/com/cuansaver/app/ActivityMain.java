@@ -55,6 +55,16 @@ public class ActivityMain extends AppCompatActivity {
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         View headerView = navigationView.getHeaderView(0);
 
+        setSupportActionBar(binding.appBarActivityMain.toolbar);
+        binding.appBarActivityMain.fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Insert New Data", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+                intendedAction("insert");
+            }
+        });
+
         DrawerLayout drawer = binding.drawerLayout;
         TextView navUsername = (TextView) headerView.findViewById(R.id.username);
         TextView navEmail = (TextView) headerView.findViewById(R.id.email);
