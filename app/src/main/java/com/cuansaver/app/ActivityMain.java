@@ -72,6 +72,7 @@ public class ActivityMain extends AppCompatActivity {
         switch (page){
             case "insert":
                 intent = new Intent(this, ActivityInsert.class);
+                intent.putExtra("uid", getIntent().getStringExtra("uid"));
                 startActivity(intent);
                 break;
             default:

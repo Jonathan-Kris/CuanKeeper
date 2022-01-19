@@ -106,6 +106,7 @@ public class ActivityLogin extends AppCompatActivity {
 
         Intent intent = new Intent(ActivityLogin.this, ActivityMain.class);
         intent.putExtra("account", authAccount);
+        intent.putExtra("uid", authAccount.getOpenId());
         startActivity(intent);
         finish();
     }

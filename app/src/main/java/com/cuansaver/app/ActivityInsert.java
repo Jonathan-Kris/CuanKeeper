@@ -12,7 +12,6 @@ import com.cuansaver.app.databinding.ActivityLandingBinding;
 import com.cuansaver.app.model.Data;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -24,6 +23,7 @@ public class ActivityInsert extends AppCompatActivity {
     private ActivityItemInsertBinding binding;
     private FirebaseDatabase database;
     private DatabaseReference ref;
+    private String uid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +31,7 @@ public class ActivityInsert extends AppCompatActivity {
         binding = ActivityItemInsertBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         database = FirebaseDatabase.getInstance("https://cuan-saver-app-default-rtdb.firebaseio.com");
+        uid = getIntent().getStringExtra("uid");
         binding.save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -39,12 +40,10 @@ public class ActivityInsert extends AppCompatActivity {
         });
     }
     private void InsertItem(){
-        FirebaseAuth auth = FirebaseAuth.getInstance();
-        String userId = auth.getUid();
         DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         Calendar cal = Calendar.getInstance();
         String date = dateFormat.format(cal.getTime());
-        ref = database.getReference().child("Expenses").child(userId);
+        ref = database.getReference().child("Expenses").child(uid);
         String id = ref.push().getKey();
 
         String name = binding.name.getText().toString();

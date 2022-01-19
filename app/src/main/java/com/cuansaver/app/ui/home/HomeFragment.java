@@ -1,5 +1,6 @@
 package com.cuansaver.app.ui.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,7 +22,6 @@ import com.cuansaver.app.model.Data;
 import com.cuansaver.app.ui.ItemAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -46,6 +46,7 @@ public class HomeFragment extends Fragment {
     private ItemAdapter itemAdapter;
     private RecyclerView rv;
 
+    private String uid;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -55,6 +56,8 @@ public class HomeFragment extends Fragment {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         database = FirebaseDatabase.getInstance("https://cuan-saver-app-default-rtdb.firebaseio.com");
+        Intent intent = getActivity().getIntent();
+        uid = intent.getStringExtra("uid");
 
         rv = binding.recyclerView;
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
@@ -63,7 +66,7 @@ public class HomeFragment extends Fragment {
         rv.setHasFixedSize(true);
         rv.setLayoutManager(linearLayoutManager);
         datas = new ArrayList<>();
-        itemAdapter = new ItemAdapter(getActivity(), datas);
+        itemAdapter = new ItemAdapter(getActivity(), datas, getActivity().getIntent().getStringExtra("uid"));
         rv.setAdapter(itemAdapter);
         ReadData();
         return root;
@@ -79,9 +82,7 @@ public class HomeFragment extends Fragment {
         DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         Calendar cal = Calendar.getInstance();
         String date = dateFormat.format(cal.getTime());
-        FirebaseAuth auth = FirebaseAuth.getInstance();
-        String userId = auth.getUid();
-        DatabaseReference reference = database.getReference().child("Expenses").child(userId);
+        DatabaseReference reference = database.getReference().child("Expenses").child(uid);
         Query query = reference.orderByChild("date").equalTo(date);
         query.addValueEventListener(new ValueEventListener() {
             @Override

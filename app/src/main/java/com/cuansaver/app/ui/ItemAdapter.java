@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +29,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.DateFormat;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -39,13 +42,16 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder>{
     private String postid;
     private String note;
     private int amount;
+    private String amountStr;
     private String item;
     private String category;
+    private String uid;
 
 
-    public ItemAdapter(Context mContext, List<Data> myDataList) {
+    public ItemAdapter(Context mContext, List<Data> myDataList, String uid) {
         this.mContext = mContext;
         this.myDataList = myDataList;
+        this.uid = uid;
     }
 
     @NonNull
@@ -59,9 +65,9 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder>{
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         final Data data = myDataList.get(position);
-        holder.item.setText("Item: "+data.getItem());
-        holder.amount.setText("Spent: $"+data.getAmount());
-        holder.date.setText("Today: "+data.getDate());
+        holder.item.setText(data.getItem());
+        holder.amount.setText("Rp. "+String.format("%,d",data.getAmount()).replace(",", "."));
+        holder.date.setText(data.getDate());
         holder.notes.setText("Note: "+data.getNotes());
         holder.category.setText("Category: "+data.getCategory());
 
@@ -115,14 +121,12 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder>{
                 amount = Integer.parseInt(mAmount.getText().toString());
                 note = mNote.getText().toString();
                 category = mSpinner.getSelectedItem().toString();
-                FirebaseAuth auth = FirebaseAuth.getInstance();
-                String userId = auth.getUid();
                 DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
                 Calendar cal = Calendar.getInstance();
                 String date = dateFormat.format(cal.getTime());
 
                 Data data = new Data(item, date, postid, note, amount, category);
-                DatabaseReference reference = FirebaseDatabase.getInstance("https://cuan-saver-app-default-rtdb.firebaseio.com").getReference().child("Expenses").child(userId);
+                DatabaseReference reference = FirebaseDatabase.getInstance("https://cuan-saver-app-default-rtdb.firebaseio.com").getReference().child("Expenses").child(uid);
                 reference.child(postid).setValue(data).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
@@ -142,19 +146,18 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder>{
             @Override
             public void onClick(View view) {
 
-                DatabaseReference reference = FirebaseDatabase.getInstance("https://cuan-saver-app-default-rtdb.firebaseio.com").getReference().child("Expenses").child("test-user");
+                DatabaseReference reference = FirebaseDatabase.getInstance("https://cuan-saver-app-default-rtdb.firebaseio.com").getReference().child("Expenses").child(uid);
                 reference.child(postid).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()){
                             Toast.makeText(mContext, "Deleted successfully", Toast.LENGTH_SHORT).show();
                         }else {
-                            Toast.makeText(mContext, "failed to delete " +task.getException(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(mContext, "Failed to delete " +task.getException(), Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
                 dialog.dismiss();
-
             }
         });
 
