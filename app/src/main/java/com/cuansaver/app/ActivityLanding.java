@@ -24,10 +24,10 @@ public class ActivityLanding extends AppCompatActivity {
             @Override
             public void onClick(View view) { intendedAction("login"); }
         });
-        binding.btnRegister.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) { intendedAction("register"); }
-        });
+//        binding.btnRegister.setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View view) { intendedAction("register"); }
+//        });
     }
     protected void intendedAction(String page){
         Intent intent = null;
