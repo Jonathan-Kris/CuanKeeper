@@ -18,6 +18,8 @@
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
+    <string name="firebase_url">https://cuansaver-default-rtdb.asia-southeast1.firebasedatabase.app</string>
+
     <string-array name="categories">
         <item>Transport</item>
         <item>Food</item>

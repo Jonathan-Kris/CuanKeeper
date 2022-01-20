@@ -1,10 +1,7 @@
-package com.cuansaver.app.ui;
+package com.cuansaver.app.fragments;
 
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,22 +15,14 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.cuansaver.app.ActivityInsert;
 import com.cuansaver.app.R;
 import com.cuansaver.app.model.Data;
-import com.cuansaver.app.ui.home.HomeFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.text.DateFormat;
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder>{
@@ -46,6 +35,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder>{
     private String category;
     private String uid;
     private String oldDate;
+    private String firebase_url = "https://cuansaver-default-rtdb.asia-southeast1.firebasedatabase.app";
 
 
     public ItemAdapter(Context mContext, List<Data> myDataList, String uid) {
@@ -133,6 +123,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder>{
         Button updateBtn  = myView.findViewById(R.id.update);
         Button deleteBtn = myView.findViewById(R.id. delete);
 
+        // Update Item
         updateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -141,7 +132,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder>{
                 category = mSpinner.getSelectedItem().toString();
 
                 Data data = new Data(item, oldDate, postid, note, amount, category);
-                DatabaseReference reference = FirebaseDatabase.getInstance("https://cuan-saver-app-default-rtdb.firebaseio.com").getReference().child("Expenses").child(uid);
+                DatabaseReference reference = FirebaseDatabase.getInstance(firebase_url).getReference().child("Expenses").child(uid);
                 reference.child(postid).setValue(data).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
@@ -157,11 +148,12 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder>{
             }
         });
 
+        // Delete Item
         deleteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                DatabaseReference reference = FirebaseDatabase.getInstance("https://cuan-saver-app-default-rtdb.firebaseio.com").getReference().child("Expenses").child(uid);
+                DatabaseReference reference = FirebaseDatabase.getInstance(firebase_url).getReference().child("Expenses").child(uid);
                 reference.child(postid).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {

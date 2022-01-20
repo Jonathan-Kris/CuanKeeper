@@ -25,7 +25,6 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.cuansaver.app.databinding.ActivityMainBinding;
-import com.huawei.hms.support.account.result.AuthAccount;
 
 import java.io.InputStream;
 
@@ -83,7 +82,6 @@ public class ActivityMain extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_activity_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
-
     }
 
     @Override

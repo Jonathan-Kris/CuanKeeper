@@ -1,4 +1,4 @@
-package com.cuansaver.app.ui.slideshow;
+package com.cuansaver.app.fragments.info;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,24 +12,23 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.cuansaver.app.R;
 import com.cuansaver.app.databinding.FragmentInfoBinding;
 
-public class SlideshowFragment extends Fragment {
+public class InfoFragment extends Fragment {
 
-    private SlideshowViewModel slideshowViewModel;
+    private InfoViewModel infoViewModel;
     private FragmentInfoBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        slideshowViewModel =
-                new ViewModelProvider(this).get(SlideshowViewModel.class);
+        infoViewModel =
+                new ViewModelProvider(this).get(InfoViewModel.class);
 
         binding = FragmentInfoBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         final TextView textView = binding.textSlideshow;
-        slideshowViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        infoViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

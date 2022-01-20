@@ -58,17 +58,11 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:26.1.1')
     implementation 'com.google.firebase:firebase-analytics'
 
-    //Firebase auth and database dependencies
-    implementation 'com.google.firebase:firebase-auth:21.0.1'
-
-    //enable login with google
-    implementation 'com.google.android.gms:play-services-auth:20.0.1'
-    implementation 'com.google.android.gms:play-services-auth:19.0.0'
-
     //Huawei Login
     implementation 'com.huawei.agconnect:agconnect-core:1.5.2.300'
     implementation 'com.huawei.hms:hwid:5.0.5.301'
     implementation 'com.huawei.hms:ads-identifier:3.4.39.302'
     implementation 'com.huawei.hms:ads-installreferrer:3.4.39.302'
     implementation 'com.huawei.hms:ads-lite:13.4.39.302'
+    implementation 'com.huawei.hms:hianalytics:6.3.2.300'
 }

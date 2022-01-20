@@ -1,16 +1,16 @@
-package com.cuansaver.app.ui.logout;
+package com.cuansaver.app.fragments.home;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class LogoutViewModel extends ViewModel {
+public class HomeViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public LogoutViewModel() {
+    public HomeViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is logout fragment");
+        mText.setValue("This is home fragment");
     }
 
     public LiveData<String> getText() {

@@ -95,6 +95,10 @@ public class ActivityLogin extends AppCompatActivity {
      * @param authAccount AuthAccount object, which contains the HUAWEI ID information.
      */
     private void dealWithResultOfSignIn(AuthAccount authAccount) {
+        // Analytics
+        Bundle bundle = new Bundle();
+        bundle.putString("account", "Logged In");
+
         // Obtain the HUAWEI DI information.
         Log.i(TAG, "display name:" + authAccount.getDisplayName());
         Log.i(TAG, "photo uri string:" + authAccount.getAvatarUriString());

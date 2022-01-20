@@ -30,7 +30,7 @@ public class ActivityInsert extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityItemInsertBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        database = FirebaseDatabase.getInstance("https://cuan-saver-app-default-rtdb.firebaseio.com");
+        database = FirebaseDatabase.getInstance("https://cuansaver-default-rtdb.asia-southeast1.firebasedatabase.app");
         uid = getIntent().getStringExtra("uid");
         binding.save.setOnClickListener(new View.OnClickListener() {
             @Override
