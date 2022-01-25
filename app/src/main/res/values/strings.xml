@@ -19,6 +19,8 @@
     <string name="previous">Previous</string>
 
     <string name="firebase_url">https://cuansaver-default-rtdb.asia-southeast1.firebasedatabase.app</string>
+    <string name="logout">Logout</string>
+    <string name="about">About</string>
 
     <string-array name="categories">
         <item>Transport</item>

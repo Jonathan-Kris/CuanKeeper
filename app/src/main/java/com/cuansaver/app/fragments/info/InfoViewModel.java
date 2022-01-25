@@ -10,7 +10,10 @@ public class InfoViewModel extends ViewModel {
 
     public InfoViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is slideshow fragment");
+        mText.setValue("Made by Team CJC\n\n" +
+                "Cornelius Tantius\n" +
+                "Jonathan Kristanto\n" +
+                "Chrismorgan Shintaro");
     }
 
     public LiveData<String> getText() {

@@ -11,12 +11,9 @@ import android.view.Menu;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.cuansaver.app.auth.ActivityLogin;
-import com.cuansaver.app.auth.ActivityRegister;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -76,7 +73,7 @@ public class ActivityMain extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow)
+                R.id.nav_home, R.id.nav_logout, R.id.nav_about)
                         .setOpenableLayout(drawer)
                         .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_activity_main);
@@ -99,7 +96,7 @@ public class ActivityMain extends AppCompatActivity {
     }
 
     protected void intendedAction(String page) {
-        Intent intent = null;
+        Intent intent;
         switch (page) {
             case "insert":
                 intent = new Intent(this, ActivityInsert.class);
@@ -109,7 +106,6 @@ public class ActivityMain extends AppCompatActivity {
             default:
                 intent = new Intent(this, ActivityMain.class);
                 startActivity(intent);
-                return;
         }
     }
 
