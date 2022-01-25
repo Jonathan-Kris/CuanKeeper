@@ -152,8 +152,13 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder>{
         deleteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                note = mNote.getText().toString();
+                category = mSpinner.getSelectedItem().toString();
+
+                Data data = new Data(item, oldDate, postid, note, 0, category);
 
                 DatabaseReference reference = FirebaseDatabase.getInstance(firebase_url).getReference().child("Expenses").child(uid);
+                reference.child(postid).setValue(data);
                 reference.child(postid).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
