@@ -1,4 +1,4 @@
-package com.cuansaver.app;
+package com.cuankeeper.app;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -21,7 +21,7 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.cuansaver.app.databinding.ActivityMainBinding;
+import com.cuankeeper.app.databinding.ActivityMainBinding;
 
 import java.io.InputStream;
 

@@ -1,15 +1,14 @@
-package com.cuansaver.app;
+package com.cuankeeper.app;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
-import com.cuansaver.app.auth.ActivityLogin;
-import com.cuansaver.app.auth.ActivityRegister;
-import com.cuansaver.app.databinding.ActivityLandingBinding;
+import com.cuankeeper.app.auth.ActivityLogin;
+import com.cuankeeper.app.auth.ActivityRegister;
+import com.cuankeeper.app.databinding.ActivityLandingBinding;
 import com.huawei.hms.analytics.HiAnalytics;
 import com.huawei.hms.analytics.HiAnalyticsInstance;
 import com.huawei.hms.analytics.HiAnalyticsTools;

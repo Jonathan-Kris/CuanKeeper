@@ -1,4 +1,4 @@
-package com.cuansaver.app.fragments;
+package com.cuankeeper.app.fragments;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -15,8 +15,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.cuansaver.app.R;
-import com.cuansaver.app.model.Data;
+import com.cuankeeper.app.R;
+import com.cuankeeper.app.model.Data;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
@@ -35,7 +35,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder>{
     private String category;
     private String uid;
     private String oldDate;
-    private String firebase_url = "https://cuansaver-default-rtdb.asia-southeast1.firebasedatabase.app";
+    private String firebase_url = "https://cuankeeper-7bd69-default-rtdb.asia-southeast1.firebasedatabase.app";
 
 
     public ItemAdapter(Context mContext, List<Data> myDataList, String uid) {

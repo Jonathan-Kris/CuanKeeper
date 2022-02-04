@@ -1,4 +1,4 @@
-package com.cuansaver.app.auth;
+package com.cuankeeper.app.auth;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,8 +7,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
-import com.cuansaver.app.ActivityMain;
-import com.cuansaver.app.R;
+import com.cuankeeper.app.ActivityMain;
+import com.cuankeeper.app.R;
 import com.huawei.hmf.tasks.OnFailureListener;
 import com.huawei.hmf.tasks.OnSuccessListener;
 import com.huawei.hmf.tasks.Task;
@@ -106,7 +106,6 @@ public class ActivityLogin extends AppCompatActivity {
         Log.i(TAG, "email:" + authAccount.getEmail());
         Log.i(TAG, "openid:" + authAccount.getOpenId());
         Log.i(TAG, "unionid:" + authAccount.getUnionId());
-        // TODO: Implement service logic after the HUAWEI ID information is obtained.
 
         Intent intent = new Intent(ActivityLogin.this, ActivityMain.class);
         intent.putExtra("account", authAccount);
@@ -122,13 +121,13 @@ public class ActivityLogin extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_CODE_SIGN_IN) {
-            Log.i(TAG, "onActivitResult of sigInInIntent, request code: " + REQUEST_CODE_SIGN_IN);
+            Log.i(TAG, "onActivityResult of sigInInIntent, request code: " + REQUEST_CODE_SIGN_IN);
             Task<AuthAccount> authAccountTask = AccountAuthManager.parseAuthResultFromIntent(data);
             if (authAccountTask.isSuccessful()) {
                 // The sign-in is successful, and the authAccount object that contains the HUAWEI ID information is obtained.
                 AuthAccount authAccount = authAccountTask.getResult();
                 dealWithResultOfSignIn(authAccount);
-                Log.i(TAG, "onActivitResult of sigInInIntent, request code: " + REQUEST_CODE_SIGN_IN);
+                Log.i(TAG, "onActivityResult of sigInInIntent, request code: " + REQUEST_CODE_SIGN_IN);
             } else {
                 // The sign-in fails. Find the failure cause from the status code. For more information, please refer to Error Codes.
                 Log.e(TAG, "sign in failed : " +((ApiException)authAccountTask.getException()).getStatusCode());

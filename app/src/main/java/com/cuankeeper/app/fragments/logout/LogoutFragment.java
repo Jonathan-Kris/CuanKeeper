@@ -1,4 +1,4 @@
-package com.cuansaver.app.fragments.logout;
+package com.cuankeeper.app.fragments.logout;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.cuansaver.app.databinding.FragmentInfoBinding;
+import com.cuankeeper.app.databinding.FragmentInfoBinding;
 import com.huawei.hmf.tasks.OnFailureListener;
 import com.huawei.hmf.tasks.OnSuccessListener;
 import com.huawei.hmf.tasks.Task;

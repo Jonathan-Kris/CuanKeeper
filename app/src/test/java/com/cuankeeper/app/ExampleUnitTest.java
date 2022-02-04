@@ -1,4 +1,4 @@
-package com.cuansaver.app;
+package com.cuankeeper.app;
 
 import org.junit.Test;
 

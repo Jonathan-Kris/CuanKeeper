@@ -1,4 +1,4 @@
-package com.cuansaver.app;
+package com.cuankeeper.app;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,9 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import com.cuansaver.app.databinding.ActivityItemInsertBinding;
-import com.cuansaver.app.databinding.ActivityLandingBinding;
-import com.cuansaver.app.model.Data;
+import com.cuankeeper.app.databinding.ActivityItemInsertBinding;
+import com.cuankeeper.app.databinding.ActivityLandingBinding;
+import com.cuankeeper.app.model.Data;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
@@ -30,7 +30,7 @@ public class ActivityInsert extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityItemInsertBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        database = FirebaseDatabase.getInstance("https://cuansaver-default-rtdb.asia-southeast1.firebasedatabase.app");
+        database = FirebaseDatabase.getInstance("https://cuankeeper-7bd69-default-rtdb.asia-southeast1.firebasedatabase.app");
         uid = getIntent().getStringExtra("uid");
         binding.save.setOnClickListener(new View.OnClickListener() {
             @Override

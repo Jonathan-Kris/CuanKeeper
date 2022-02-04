@@ -1,4 +1,4 @@
-package com.cuansaver.app.model;
+package com.cuankeeper.app.model;
 
 public class Data {
     private String item, date, id, notes, category;

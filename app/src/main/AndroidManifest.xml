@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest
-    xmlns:android="http://schemas.android.com/apk/res/android" package="com.cuansaver.app"
+    xmlns:android="http://schemas.android.com/apk/res/android" package="com.cuankeeper.app"
     xmlns:tools="http://schemas.android.com/tools">
 
     <application android:allowBackup="true"
@@ -8,19 +8,19 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.CuanSaver">
+        android:theme="@style/Theme.CuanKeeper">
 
-        <activity android:name=".ActivityInsert"
+        <activity android:name="com.cuankeeper.app.ActivityInsert"
             android:exported="false" />
-        <activity android:name=".ActivityMain"
+        <activity android:name="com.cuankeeper.app.ActivityMain"
             android:exported="false"
             android:label="@string/title_activity_main"
-            android:theme="@style/Theme.CuanSaver.NoActionBar" />
-        <activity android:name=".auth.ActivityLogin"
+            android:theme="@style/Theme.CuanKeeper.NoActionBar" />
+        <activity android:name="com.cuankeeper.app.auth.ActivityLogin"
             android:exported="false" />
-        <activity android:name=".auth.ActivityRegister"
+        <activity android:name="com.cuankeeper.app.auth.ActivityRegister"
             android:exported="false" />
-        <activity android:name=".ActivityLanding"
+        <activity android:name="com.cuankeeper.app.ActivityLanding"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

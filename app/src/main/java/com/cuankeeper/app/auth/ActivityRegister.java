@@ -1,4 +1,4 @@
-package com.cuansaver.app.auth;
+package com.cuankeeper.app.auth;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,10 +6,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.cuansaver.app.ActivityMain;
-import com.cuansaver.app.R;
-import com.cuansaver.app.databinding.ActivityAuthLoginBinding;
-import com.cuansaver.app.databinding.ActivityAuthRegisterBinding;
+import com.cuankeeper.app.ActivityMain;
+import com.cuankeeper.app.R;
+import com.cuankeeper.app.databinding.ActivityAuthLoginBinding;
+import com.cuankeeper.app.databinding.ActivityAuthRegisterBinding;
 
 public class ActivityRegister extends AppCompatActivity {
     private ActivityAuthRegisterBinding binding;

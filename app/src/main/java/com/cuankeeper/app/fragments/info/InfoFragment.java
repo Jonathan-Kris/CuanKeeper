@@ -1,4 +1,4 @@
-package com.cuansaver.app.fragments.info;
+package com.cuankeeper.app.fragments.info;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.cuansaver.app.databinding.FragmentInfoBinding;
+import com.cuankeeper.app.databinding.FragmentInfoBinding;
 
 public class InfoFragment extends Fragment {
 

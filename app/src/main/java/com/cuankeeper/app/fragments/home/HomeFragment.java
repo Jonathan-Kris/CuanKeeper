@@ -1,4 +1,4 @@
-package com.cuansaver.app.fragments.home;
+package com.cuankeeper.app.fragments.home;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -17,10 +16,9 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.cuansaver.app.R;
-import com.cuansaver.app.databinding.FragmentHomeBinding;
-import com.cuansaver.app.model.Data;
-import com.cuansaver.app.fragments.ItemAdapter;
+import com.cuankeeper.app.databinding.FragmentHomeBinding;
+import com.cuankeeper.app.model.Data;
+import com.cuankeeper.app.fragments.ItemAdapter;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -55,7 +53,7 @@ public class HomeFragment extends Fragment {
 
     private String uid, selectionDate;
 //    private String firebase_url = getString(R.string.firebase_url);
-    private String firebase_url = "https://cuansaver-default-rtdb.asia-southeast1.firebasedatabase.app";
+    private String firebase_url = "https://cuankeeper-7bd69-default-rtdb.asia-southeast1.firebasedatabase.app";
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {

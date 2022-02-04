@@ -1,4 +1,4 @@
-package com.cuansaver.app.fragments.info;
+package com.cuankeeper.app.fragments.info;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
